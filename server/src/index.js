@@ -9,7 +9,7 @@ dotenv.config();
 // Port.
 const port = process.env.PORT || 8001;
 
-// Initialize app.
+// Initialize server.
 const server = new ApolloServer({});
 const app = express();
 server.applyMiddleware({ app });
@@ -26,5 +26,5 @@ app.get('/', (req, res) => res.send('<p>👋 Xin chào</p>'));
 
 // Start server.
 app.listen(port, () => {
-  console.log(`Server started on ${port}`);
+    console.log(`Server started on ${port}`);
 });

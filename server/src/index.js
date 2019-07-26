@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import { ApolloServer } from 'apollo-server-express';
 
 dotenv.config();
 
@@ -9,7 +10,9 @@ dotenv.config();
 const port = process.env.PORT || 8001;
 
 // Initialize app.
+const server = new ApolloServer({});
 const app = express();
+server.applyMiddleware({ app });
 
 // Body parser.
 app.use(bodyParser.urlencoded({ extended: false }));

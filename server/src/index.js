@@ -3,16 +3,22 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { ApolloServer } from 'apollo-server-express';
+import { schema } from './graphql';
 
+// Config dotenv.
 dotenv.config();
 
 // Port.
-const port = process.env.PORT || 8001;
+const port = process.env.PORT || 9000;
+// GraphQL path.
+const path = '/graphql';
 
 // Initialize server.
-const server = new ApolloServer({});
+const server = new ApolloServer({
+  schema
+});
 const app = express();
-server.applyMiddleware({ app });
+server.applyMiddleware({ app, path, cors: true });
 
 // Body parser.
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -26,5 +32,5 @@ app.get('/', (req, res) => res.send('<p>👋 Xin chào</p>'));
 
 // Start server.
 app.listen(port, () => {
-    console.log(`Server started on ${port}`);
+  console.log(`Server started on http://localhost:${port}`);
 });

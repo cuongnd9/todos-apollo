@@ -7,10 +7,10 @@ export default {
             .get('todos')
             .find({ id })
             .value(),
-    create: ({ id, title, completed }) =>
+    create: ({ title }) =>
         db
             .get('todos')
-            .push({ id, title, completed })
+            .push({ title })
             .write(),
     update: ({ id, title, completed }) =>
         db

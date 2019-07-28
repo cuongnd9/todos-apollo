@@ -4,15 +4,15 @@ import { TodoService } from '../services';
 const typeDefs = gql`
     type Query {
         todos: [Todo]
-        todo(id: Int!): Todo
+        todo(id: String!): Todo
     }
     type Mutation {
         createTodo(title: String): Todo
-        updateTodo(id: Int!, title: String, completed: Boolean): Todo
-        deleteTodo(id: Int!): Todo
+        updateTodo(id: String!, title: String, completed: Boolean): Todo
+        deleteTodo(id: String!): Todo
     }
     type Todo {
-        id: Int!
+        id: String!
         title: String
         completed: Boolean!
     }

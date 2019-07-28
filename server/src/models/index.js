@@ -1,5 +1,5 @@
 import low from 'lowdb';
-import FileSync from 'lowdb/adapters/FileAsync';
+import FileSync from 'lowdb/adapters/FileSync';
 
 // Initialize lowdb.
 const adapters = new FileSync(`${__dirname}/db.json`);

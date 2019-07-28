@@ -1,29 +1,34 @@
+import thinid from 'thinid';
 import db from '../models';
+
+const findTodo = id =>
+  db
+    .get('todos')
+    .find({ id })
+    .value();
 
 export default {
   list: () => db.get('todos').value(),
-  retrieve: id =>
-    db
-      .get('todos')
-      .find({ id })
-      .value(),
-  create: ({ title }) =>
-    db
-      .get('todos')
-      .push({ title })
-      .write()
-      .value(),
-  update: ({ id, title, completed }) =>
-    db
-      .get('todos')
+  retrieve: id => findTodo(id),
+  create: ({ title }) => {
+    const id = thinid();
+    db.get('todos')
+      .push({ id, title, completed: false })
+      .write();
+    return findTodo(id);
+  },
+  update: ({ id, title, completed }) => {
+    db.get('todos')
       .find({ id })
       .assign({ title, completed })
-      .write()
-      .value(),
-  destroy: id =>
-    db
-      .get('todos')
+      .write();
+    return findTodo(id);
+  },
+  destroy: id => {
+    const removedTodo = findTodo(id);
+    db.get('todos')
       .remove({ id })
-      .write()
-      .value()
+      .write();
+    return removedTodo;
+  }
 };

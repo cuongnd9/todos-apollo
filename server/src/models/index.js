@@ -6,6 +6,6 @@ const adapters = new FileSync(`${__dirname}/db.json`);
 const db = low(adapters);
 
 // Set default value.
-// db.defaults({ todos: [] }).write();
+db.defaults({ todos: [] }).write();
 
 export default db;

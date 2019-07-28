@@ -1,20 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { ReposContainer } from './containers';
-import { Navbar, NotFound } from './components';
+import { ApolloProvider } from 'react-apollo';
+import client from './graphql';
+import { Todos } from './components';
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <div className="container">
-        <Switch>
-          <Route path="/" exact component={ReposContainer} />
-          <Route path="*" component={NotFound} />
-        </Switch>
-      </div>
-    </Router>
+    <ApolloProvider client={client}>
+      <Todos />
+    </ApolloProvider>
   );
 }
 

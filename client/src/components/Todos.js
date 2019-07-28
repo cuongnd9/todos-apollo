@@ -1,18 +1,29 @@
 import React from 'react';
 import { ClipLoader } from 'react-spinners';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
 import Todo from './Todo';
 
-function Todos({ data }) {
+const GET_TODOS = gql`
+  query {
+    todos {
+      id
+      title
+      completed
+    }
+  }
+`;
+
+function Todos({ data: { loading, todos } }) {
+  if (loading) return <ClipLoader sizeUnit="px" size={45} color="#123abc" />;
   return (
     <div className="container p-5">
-      <h4 className="text-primary mb-3">Todos App</h4>
-      {!data && <div className="text-danger">Nothing</div>}
-      {data && data.length === 0 && <ClipLoader sizeUnit="px" size={45} color="#123abc" />}
-      {data &&
-        data.length !== 0 &&
-        data.map(todoData => <Todo data={todoData} key={todoData.id} />)}
+      <h1 className="text-warning mb-3">Todos App</h1>
+      {todos.map(todoData => (
+        <Todo data={todoData} key={todoData.id} />
+      ))}
     </div>
   );
 }
 
-export default Todos;
+export default graphql(GET_TODOS)(Todos);

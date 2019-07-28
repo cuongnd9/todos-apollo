@@ -12,11 +12,8 @@
     "react": "^16.8.6",
     "react-apollo": "^2.5.8",
     "react-dom": "^16.8.6",
-    "react-redux": "^7.0.3",
     "react-scripts": "3.0.1",
-    "react-spinners": "^0.5.4",
-    "redux": "^4.0.1",
-    "redux-saga": "^1.0.2"
+    "react-spinners": "^0.5.4"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -36,6 +36,8 @@ $ cd client && yarn start
 
 **todos: [Todo]**
 
+![list](images/1.png)
+
 ```
 query {
   todos {
@@ -47,6 +49,8 @@ query {
 ```
 
 **todo(id: String!): Todo**
+
+![retrieve](images/2.png)
 
 ```
 query {
@@ -62,6 +66,8 @@ query {
 
 **createTodo(title: String): Todo**
 
+![create](images/3.png)
+
 ```
 mutation {
   createTodo(title: "Learn Apollo") {
@@ -74,6 +80,8 @@ mutation {
 
 **updateTodo(id: String!, title: String, completed: Boolean): Todo**
 
+![update](images/4.png)
+
 ```
 mutation {
   updateTodo(id: "1431#9e3a_2936^8b12-235a", title: "Learn Prisma", completed: true){
@@ -85,6 +93,8 @@ mutation {
 ```
 
 **deleteTodo(id: String!): Todo**
+
+![destroy](images/5.png)
 
 ```
 mutation {

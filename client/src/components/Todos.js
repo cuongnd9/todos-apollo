@@ -18,10 +18,9 @@ function Todos({ data: { loading, todos } }) {
   if (loading) return <ClipLoader sizeUnit="px" size={45} color="#123abc" />;
   return (
     <div className="container p-5">
-      <h1 className="text-warning mb-3">Todos App</h1>
-      {todos.map(todoData => (
-        <Todo data={todoData} key={todoData.id} />
-      ))}
+      <h1 className="text-primary mb-3">Todos App</h1>
+      {!todos && <p className="text-danger">Empty...</p>}
+      {todos && todos.map(todoData => <Todo data={todoData} key={todoData.id} />)}
     </div>
   );
 }
